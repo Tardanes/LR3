@@ -1,3 +1,8 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println(Character.toLowerCase('A'));
@@ -47,5 +52,39 @@ public class Main {
         sb=new StringBuffer("Hello world");
         s=sb.toString();
         System.out.println(s);
+
+        // Laboratory work #3
+
+        System.out.println("\uD83D\uDE04");
+        System.out.println("\uD83D\uDE0D");
+        System.out.println("\uD83D\uDE02");
+
+
+        String dateString = "Sunday, 12 September 2021";
+
+        // Формат дати з вказаною локалізацією
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
+
+        try {
+            // Парсимо рядок у дату
+            Date date = dateFormat.parse(dateString);
+
+            // Отримуємо поточний рік
+            Date currentDate = new Date();
+            SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+            int currentYear = Integer.parseInt(yearFormat.format(currentDate));
+
+            // Отримуємо рік дати, яку ми перевіряємо
+            int dateYear = Integer.parseInt(yearFormat.format(date));
+
+            // Перевіряємо, чи дата відноситься до поточного року
+            if (currentYear == dateYear) {
+                System.out.println("Дата відноситься до поточного року.");
+            } else {
+                System.out.println("Дата не відноситься до поточного року.");
+            }
+        } catch (ParseException e) {
+            System.out.println("Помилка при парсингу дати: " + e.getMessage());
+        }
     }
 }
