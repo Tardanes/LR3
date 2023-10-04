@@ -61,23 +61,13 @@ public class Main {
 
 
         String dateString = "Sunday, 12 September 2021";
-
-        // Формат дати з вказаною локалізацією
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.ENGLISH);
-
         try {
-            // Парсимо рядок у дату
             Date date = dateFormat.parse(dateString);
-
-            // Отримуємо поточний рік
             Date currentDate = new Date();
             SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
             int currentYear = Integer.parseInt(yearFormat.format(currentDate));
-
-            // Отримуємо рік дати, яку ми перевіряємо
             int dateYear = Integer.parseInt(yearFormat.format(date));
-
-            // Перевіряємо, чи дата відноситься до поточного року
             if (currentYear == dateYear) {
                 System.out.println("Дата відноситься до поточного року.");
             } else {
